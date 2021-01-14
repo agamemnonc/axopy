@@ -154,8 +154,12 @@ class StepCounter(Counter):
         self.count += 1
 
         if self.count in self.step_count:
-            _index = self.step_count.index(self.count)
-            getattr(self, 'step' + str(_index)).emit()
+            # _index = self.step_count.index(self.count)
+            # getattr(self, 'step' + str(_index)).emit()
+            _index = [i for i, x in enumerate(self.step_count)
+                      if x == self.count]
+            for i in _index:
+                getattr(self, 'step' + str(i)).emit()
 
         if self.count == self.max_count:
             if self.reset_on_timeout:

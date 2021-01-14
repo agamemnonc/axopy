@@ -4,6 +4,7 @@ import numpy
 import random
 import pprint
 
+
 __all__ = ['Design', 'Block', 'Trial', 'Array']
 
 
@@ -277,7 +278,6 @@ class BufferedArray(object):
             self.overflow = True
             return
 
-        # about as stupid as Axopy's arbitrary stack dims
         idx = slice(self.pos, new_pos)
         if (self.insert_axis == 0):
             self.buffer[idx, :] = data
